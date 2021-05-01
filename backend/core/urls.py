@@ -4,6 +4,6 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ecommerce_app.urls')),
+    path('', include('payments.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
 ]
