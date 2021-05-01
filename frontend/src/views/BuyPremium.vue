@@ -10,7 +10,8 @@
         <input type="hidden" name="amount" :value="serverData.amount" id="id_amount">
         <input type="hidden" name="item_name" :value="serverData.item_name" id="id_item_name">
         <input type="hidden" name="invoice" :value="serverData.invoice" id="id_invoice">
-        <input type="hidden" name="notify_url" value="http://127.0.0.1:8001/paypal/" id="id_notify_url">
+        <input type="hidden" name="notify_url"
+               value="http://151.248.121.132:8920/api/v1/payments/paypal/payment_notify/" id="id_notify_url">
         <input type="hidden" name="cancel_return" value="http://127.0.0.1:8080/payment-cancelled/"
                id="id_cancel_return">
         <input type="hidden" name="return" value="http://127.0.0.1:8080/payment-done/" id="id_return">
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     async getServerData() {
-      axios.post("http://127.0.0.1:8001/buy_premium/")
+      axios.post("http://127.0.0.1:8001/api/v1/payments/paypal/buy_premium/", {}, {headers: {Authorization: "Token 8a3b3898449a23141b9559e3b2f174e174af9347"}})
            .then(res => {
              console.log(res.data)
              this.serverData = res.data
